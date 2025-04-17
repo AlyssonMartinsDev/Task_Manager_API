@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.swp
+.python-version
+
+# FastAPI/Venv
+venv/
+.env
+.env.local
+
+# Banco de dados (SQLite)
+*.db
+*.sqlite
+
+# IDE/Editores
+.vscode/
+.idea/
+
+# Logs e arquivos temporários
+*.log
+*.tmp

@@ -1,10 +1,27 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.exceptions import RequestValidationError
+
 from sqlalchemy.orm import Session
 from sqlalchemy import text 
 
-from app.db.db_config import get_db
+
+from app.db.db_config import get_db, Base, engine
+from app.routes import users_routes
+
+from app.exceptions.exceptions_handler import ExceptionHandler
 
 app = FastAPI()
+# criação das tabelas
+Base.metadata.create_all(bind=engine)
+
+# Exceptions handler
+app.add_exception_handler(RequestValidationError, ExceptionHandler.request_validation_error)
+app.add_exception_handler(HTTPException, ExceptionHandler.http_exceptions)
+
+# Rotas
+app.include_router(users_routes.router)
+
+
 
 
 @app.get('/')

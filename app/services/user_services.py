@@ -63,3 +63,12 @@ class UserService:
         # VI- Retorna a resposta com os dados do novo usuario
 
         return new_user
+    
+    def get_all_users(db: Session):
+        """
+            Service responsavel por obter todos os usuarios no banco de dados
+
+        """
+
+
+        

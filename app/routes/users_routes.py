@@ -39,3 +39,10 @@ def criar_usuario(user:UserCreate, db: Session = Depends(get_db)):
         status_code=status.HTTP_201_CREATED,
         content=res.model_dump()
     )
+
+
+@router.get('/', response_model=SuccessResponseSchema, status_code=status.HTTP_200_OK)
+def get_all_users(db: Session = Depends(get_db)):
+    """"
+        Rota para obter todos os usuarios
+    """

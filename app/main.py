@@ -6,7 +6,7 @@ from sqlalchemy import text
 
 
 from app.db.db_config import get_db, Base, engine
-from app.routes import users_routes
+from app.routes import users_routes,auth_routes
 
 from app.exceptions.exceptions_handler import ExceptionHandler
 
@@ -20,6 +20,7 @@ app.add_exception_handler(HTTPException, ExceptionHandler.http_exceptions)
 
 # Rotas
 app.include_router(users_routes.router)
+app.include_router(auth_routes.router)
 
 
 
